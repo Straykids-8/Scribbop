@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Notes - Learn & Create!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="user-select" id="userSelect">
+            <div class="user-type" onclick="selectUserType('student')">
+                <div class="user-icon">📚</div>
+                <h2>Student</h2>
+                <p>Create magical learning notes!</p>
+            </div>
+            <div class="user-type" onclick="selectUserType('teacher')">
+                <div class="user-icon">🍎</div>
+                <h2>Teacher</h2>
+                <p>Guide and inspire learning!</p>
+            </div>
+        </div>
+        <div id="dashboard">
+            <div class="dashboard-header">
+                <button class="back-btn" onclick="goBack()" style="position: absolute; left: 0; top: 0; background: none; border: none; font-size: 24px;">🔙</button>
+                <h1 id="userTypeTitle" style="text-align: center; margin-bottom: 20px; color: var(--primary-color);"></h1>
+            </div>
+            <textarea id="noteInput" placeholder="Start your learning adventure here..."></textarea>
+            <div class="buttons">
+                <button class="save-btn" onclick="saveNote()">💾 Save Note</button>
+                <button class="share-btn" onclick="shareNote()">🌐 Share Note</button>
+                <button class="delete-btn" onclick="toggleTrashList()">🗑️ Trash</button>
+            </div>
+            <div id="shareOptions" class="share-options">
+                <div class="share-method" onclick="shareNoteWeb()" title="Web Share">🌍</div>
+                <div class="share-method" onclick="copyNoteToClipboard()" title="Copy to Clipboard">📋</div>
+                <div class="share-method" onclick="emailNote()" title="Email Note">📧</div>
+            </div>
+            <div id="notesList"></div>
+            <div id="trashList" class="trash-list" style="display:none;">
+                <h3 style="text-align: center; color: var(--secondary-color);">🗑️ Deleted Notes</h3>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

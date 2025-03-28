@@ -1,0 +1,263 @@
+:root {
+    --primary-color: #6A5ACD;
+    --secondary-color: #FF6B6B;
+    --accent-color: #4ECDC4;
+    --background-color: #F7FFF7;
+    --text-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.app-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+    transition: all 0.5s ease;
+}
+
+.user-select {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.user-type {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-type:hover {
+    transform: rotateY(15deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.user-type::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.user-type:hover::before {
+    opacity: 1;
+}
+
+.user-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+#dashboard {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 3px dashed var(--secondary-color);
+    border-radius: 15px;
+    resize: vertical;
+    font-size: 16px;
+    background: rgba(255,255,255,0.7);
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(106,90,205,0.2);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    transform: perspective(500px);
+}
+
+.save-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.share-btn, .delete-btn, .restore-btn {
+    background: var(--secondary-color);
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#notesList {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.note-item {
+    background: rgba(78,205,196,0.1);
+    border-left: 5px solid var(--accent-color);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.note-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.note-actions button {
+    background: none;
+    color: var(--primary-color);
+    padding: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trash-list {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.share-options {
+    display: none;
+    background: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.share-method {
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.share-method:hover {
+    transform: scale(1.1);
+}
+
+/* Email Modal Styles */
+.email-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.email-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.email-modal-content input,
+.email-modal-content textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.email-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+/* Add this to the existing CSS */
+.dashboard-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.2) rotate(-10deg);
+}
